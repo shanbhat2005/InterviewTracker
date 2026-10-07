@@ -32,7 +32,8 @@ import { useQuestion } from '../context/QuestionContext';
 const QuestionLayout = () => {
 
 
-  const {questions}= useQuestion()
+  const {questions,filteredData}= useQuestion()
+
 
   return (
     <section className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
@@ -46,9 +47,9 @@ const QuestionLayout = () => {
             <span>Action</span>
           </div>
 
-          {questions.map((question) => (
-            <QuestionListItem key={question.id} question={question}  />
-          ))}
+      {(filteredData ?? questions).map((question) => (
+  <QuestionListItem key={question.id} question={question} />
+))}
         </div>
       </div>
     </section>

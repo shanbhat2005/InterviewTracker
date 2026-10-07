@@ -1,8 +1,22 @@
+import { useForm } from "react-hook-form";
+import { useQuestion } from "../context/QuestionContext";
+
 const SearchQuestionForm = () => {
+
+
+const {register,reset,handleSubmit}=useForm( 
+)
+const {setSearchQuestion}= useQuestion()
+
+const handleSearch=(data)=>{
+setSearchQuestion(data)
+console.log(data);
+
+}
   return (
-    <form
+    <form 
       className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6"
-      onSubmit={(event) => event.preventDefault()}
+      onSubmit={handleSubmit(handleSearch) }
     >
       <div className="flex items-center gap-3 border-b border-slate-100 pb-5">
         <div className="flex h-6 w-6 items-center justify-center rounded-md bg-indigo-50 text-indigo-600">
@@ -26,7 +40,7 @@ const SearchQuestionForm = () => {
             <span className="material-symbols-outlined pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-base text-slate-400">
               search
             </span>
-            <input
+            <input {...register("query")}
               id="question-search"
               name="query"
               type="search"
@@ -44,6 +58,7 @@ const SearchQuestionForm = () => {
             Category
           </label>
           <select
+          {...register("category")}
             id="search-category"
             name="category"
             defaultValue=""
@@ -64,6 +79,7 @@ const SearchQuestionForm = () => {
             Difficulty
           </label>
           <select
+          {...register("difficulty")}
             id="search-difficulty"
             name="difficulty"
             defaultValue=""
@@ -84,6 +100,7 @@ const SearchQuestionForm = () => {
             Status
           </label>
           <select
+          {...register("status")}
             id="search-status"
             name="status"
             defaultValue=""

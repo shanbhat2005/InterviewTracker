@@ -7,7 +7,7 @@ const statusStyles = {
 };
 
 const QuestionListItem = ({ question }) => {
-  const {deleteQuestion}= useQuestion()
+  const {deleteQuestion,updateQuestionStatus}= useQuestion()
   return (
     <div className="grid min-w-[720px] grid-cols-[minmax(220px,2fr)_1fr_1fr_1fr_100px] items-center gap-4 border-b border-slate-100 px-4 py-4 last:border-b-0 sm:px-5">
       <div>
@@ -28,6 +28,18 @@ const QuestionListItem = ({ question }) => {
       </span>
 
       <div className="flex items-center">
+        <input
+          type="checkbox"
+          aria-label={`Mark ${question.title} as completed`}
+          checked={question.status === 'Completed'}
+          onChange={(event) =>
+            updateQuestionStatus(
+              question.id,
+              event.target.checked ? 'Completed' : 'In Progress'
+            )
+          }
+          className="mr-2 h-4 w-4 cursor-pointer accent-emerald-600 focus:ring-2 focus:ring-emerald-200"
+        />
         <button
           type="button"
           aria-label={`Delete ${question.title}`}
