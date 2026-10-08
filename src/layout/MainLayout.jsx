@@ -1,7 +1,7 @@
 import React from 'react'
 import IntroSection from '../components/IntroSection'
 import StatsRow from '../components/StatsRow'
-import AddQuestionForm from '../components/AddQuestionFOrm'
+import AddQuestionForm from '../components/AddQuestionForm'
 import SearchQuestionForm from '../components/SearchQuestionForm'
 
 const MainLayout = () => {

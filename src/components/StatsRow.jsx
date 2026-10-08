@@ -8,6 +8,9 @@ export default function StatsRow() {
     return q.category==='DSA'
   })
   const completedDsaQuestions= dsaQuestions.filter((q)=>  q.status==="Completed")
+  const dsaCompletionRate = dsaQuestions.length
+    ? Math.round((completedDsaQuestions.length / dsaQuestions.length) * 100)
+    : 0
   const interviewQuestions=questions.filter(q=> ['Technical', 'Git'].includes(q.category))
   const completedInterviewQuestions= interviewQuestions.filter(q=> q.status==='Completed')
   const machineCodingRounds=questions.filter(q=> q.category==='Machine Coding')
@@ -42,9 +45,12 @@ export default function StatsRow() {
           <span className="text-label-sm text-secondary">solved</span>
         </div>
         <div className="mt-2 flex items-center justify-between text-label-sm">
-          <span className="font-medium text-indigo-700">70% rate</span>
+          <span className="font-medium text-indigo-700">{dsaCompletionRate}% rate</span>
           <div className="h-1.5 w-20 overflow-hidden rounded-full bg-surface-container">
-            <div className="h-full rounded-full bg-primary-container" style={{ width: '70%' }} />
+            <div
+              className="h-full rounded-full bg-primary-container"
+              style={{ width: `${dsaCompletionRate}%` }}
+            />
           </div>
         </div>
       </StatCard>

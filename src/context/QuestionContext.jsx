@@ -7,7 +7,10 @@ export const QuestionProvider=({children})=>{
     const [questions, setQuestions] = useState(JSON.parse(localStorage.getItem("questions"))||[])
     // console.log(dsaQuestions);
 const [searchQuestion, setSearchQuestion] = useState(null)  
-const [filteredData, setFilteredData] = useState(null)  
+    const searchText = searchQuestion?.query?.toLowerCase() || ''
+    const filteredData = questions.filter((question) =>
+        question.title.toLowerCase().includes(searchText)
+    )
 
     // console.log(questions);
 
@@ -28,7 +31,7 @@ const [filteredData, setFilteredData] = useState(null)
     }
     
 
-    return <QuestionContext.Provider value={{questions,setQuestions,setSearchQuestion,deleteQuestion,updateQuestionStatus}}>
+    return <QuestionContext.Provider value={{questions,filteredData,setQuestions,setSearchQuestion,deleteQuestion,updateQuestionStatus}}>
 {children}
     </QuestionContext.Provider>
 }
