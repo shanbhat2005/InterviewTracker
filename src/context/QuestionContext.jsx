@@ -10,7 +10,10 @@ export const QuestionProvider=({children})=>{
 const [searchQuestion, setSearchQuestion] = useState(null)  
     const searchText = searchQuestion?.query?.toLowerCase() || ''
     const filteredData = questions.filter((question) =>
-        question.title.toLowerCase().includes(searchText)
+        question.title.toLowerCase().includes(searchText) &&
+        (!searchQuestion?.category || question.category === searchQuestion.category) &&
+        (!searchQuestion?.difficulty || question.difficulty === searchQuestion.difficulty) &&
+        (!searchQuestion?.status || question.status === searchQuestion.status)
     )
 
     // console.log(questions);

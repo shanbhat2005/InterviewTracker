@@ -10,8 +10,12 @@ const {setSearchQuestion}= useQuestion()
 
 const handleSearch=(data)=>{
 setSearchQuestion(data)
-console.log(data);
 
+}
+
+const handleClearFilters = () => {
+  reset()
+  setSearchQuestion(null)
 }
   return (
     <form 
@@ -68,6 +72,7 @@ console.log(data);
             <option value="DSA">DSA</option>
             <option value="Git">Git</option>
             <option value="Technical">Technical</option>
+            <option value="Machine Coding">Machine Coding</option>
           </select>
         </div>
 
@@ -121,7 +126,8 @@ console.log(data);
             Search Questions
           </button>
           <button
-            type="reset"
+            type="button"
+            onClick={handleClearFilters}
             className="h-9 rounded-lg border border-slate-200 px-4 text-sm font-medium text-slate-700 transition hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-indigo-100"
           >
             Clear filters
