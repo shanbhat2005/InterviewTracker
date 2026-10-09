@@ -15,13 +15,16 @@ const AddQuestionForm = () => {
     },
   });
 
-  const {questions,setQuestions}= useQuestion()
+  const {questions,setQuestions,setTotalQuestion}= useQuestion()
 
   const handleAdd=(data)=>{
 console.log(data);
 const values= [...questions,{...data,id:crypto.randomUUID()}]
 localStorage.setItem("questions",JSON.stringify(values))
+localStorage.setItem("totalQuestion",JSON.stringify(values))
 setQuestions(values)
+setTotalQuestion(values)
+
 console.log(values);
 
 

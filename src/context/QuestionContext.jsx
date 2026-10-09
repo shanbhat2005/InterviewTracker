@@ -5,6 +5,7 @@ export const QuestionContext= createContext()
 export const QuestionProvider=({children})=>{
 
     const [questions, setQuestions] = useState(JSON.parse(localStorage.getItem("questions"))||[])
+    const [totalQuestion, setTotalQuestion] = useState([])
     // console.log(dsaQuestions);
 const [searchQuestion, setSearchQuestion] = useState(null)  
     const searchText = searchQuestion?.query?.toLowerCase() || ''
@@ -31,7 +32,7 @@ const [searchQuestion, setSearchQuestion] = useState(null)
     }
     
 
-    return <QuestionContext.Provider value={{questions,filteredData,setQuestions,setSearchQuestion,deleteQuestion,updateQuestionStatus}}>
+    return <QuestionContext.Provider value={{questions,setTotalQuestion,filteredData,setQuestions,setSearchQuestion,deleteQuestion,updateQuestionStatus}}>
 {children}
     </QuestionContext.Provider>
 }

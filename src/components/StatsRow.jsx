@@ -3,7 +3,7 @@ import StatCard from './StatCard'
 
 export default function StatsRow() {
 
-  const {questions}= useQuestion()
+  const {questions,totalQuestion}= useQuestion()
   const dsaQuestions= questions.filter((q)=>{
     return q.category==='DSA'
   })
@@ -35,7 +35,7 @@ export default function StatsRow() {
         </div>
         {questions.length>=1&&<div className="mt-2 flex items-center gap-1.5 text-label-sm font-medium text-emerald-700">
           <span className="material-symbols-outlined">trending_up</span>
-          <span>+  {questions.length-1} this week</span>
+          <span>+  {questions.length} this week</span>
         </div>}
       </StatCard>
 
